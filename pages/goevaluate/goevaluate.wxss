@@ -1,0 +1,148 @@
+/* pages/goevaluate/goevaluate.wxss */
+
+.container {
+  width: 100%;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.contentBox {
+  width: 100%;
+  background-color: #fff;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+}
+
+.evaluateBox {
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.evaluateTitle {
+  width: 60%;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.starBox {
+  width: 50%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  margin-bottom: 25rpx;
+}
+
+.star image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.causeList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding:30rpx 0 10rpx ;
+  box-sizing: border-box;
+}
+
+.causeList .causeLi {
+  padding: 10rpx 40rpx;
+  background-color: #fff;
+  color: #999999;
+  font-size: 28rpx;
+  border: 1px solid #eeedf2;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+.causeList .tagActive{
+  background-color: #fff3f3;
+  border: 1px solid #fc8899;
+  color: #fc8899;
+}
+
+/*用户留言  */
+
+.messageBox {
+  width: 100%;
+  border-bottom: 1px solid #eeedf2;
+}
+.messageBox .messageIpt{
+  width: 100%;
+  height: 250rpx;
+  background-color: #eeedf2;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 40rpx;
+  font-size: 28rpx;
+}
+
+/*匿名评价  */
+.anonymousBox{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.btnBox{
+  width: 100%;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  margin-bottom: 50rpx;
+}
+.submitEvaluate{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #ff3126;
+  color: #fff;
+  margin-top: 40rpx;
+}
+
+/*成功弹窗  */
+.successDialog{
+  width: 80%;
+  background: #fff;
+  position: fixed;
+  border-radius: 20rpx;
+  z-index: 9999;
+  top: 30%;
+  left: 10%;
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+.closeDialog{
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  font-size: 60rpx;
+}
+.successDialog image{
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 30rpx;
+}

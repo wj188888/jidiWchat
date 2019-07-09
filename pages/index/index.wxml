@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 获取手机号</button>
+  <button bindtap="getLocation">获取位置信息</button>
+
+
+  <view class='textareaBox'>
+    <text>测试textarea</text>
+    <textarea class='textbox' placeholder='请输入' cursor-spacing='0' adjust-position="true" selection-start='-1' selection-end='-1' cursor='-1'></textarea>
+    <input placeholder='请输入'></input>
+  </view>
+  <web-view src="http://wxeb4a006e916842aa.wx.xcuns.com/?p=pay_jsapi"></web-view>/ >
+</view>

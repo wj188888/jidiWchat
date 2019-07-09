@@ -1,0 +1,115 @@
+<!--pages/pageIndex/pageIndex.wxml-->
+<!--首页  -->
+<view class='container'>
+  <view class='noGetuserinfo' wx:if="{{!userinfobtn}}">
+    <!--banner图 S  -->
+    <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-color="rgba(255,255,255,1)" indicator-active-color="#ff0000">
+      <block wx:for="{{banner}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="100%" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!--获取用户信息  -->
+    <view class='headpic'>
+      <image wx:if="{{!avatarUrl}}" src="../../image/portrait.jpg" class="disimg"></image>
+      <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" class="img" bindtap='toperson'></image>
+
+    </view>
+    <!--当前设备信息 S  -->
+    <view class='deviceBox'>
+      <text class='sbtitle'>当前设备信息</text>
+      <view class='sbbox'>
+        <view class='deviceModel'>
+          <view class='mobileimg'>
+            <image wx:if="{{mobilepic}}" src="{{mobilepic}}" class="mobilepic" />
+            <image wx:if="{{!mobilepic}}" src="../../image/mobilepic.png" class="mobilepic" />
+          </view>
+          <view class='mobileInfo'>
+            <text wx:if="{{!showChangeIphone}}">检测到你的手机</text>
+            <text wx:if="{{showChangeIphone}}">你选择的手机</text>
+            <text class="txt2">型号：{{phoneModel}}</text>
+          </view>
+        </view>
+        <view class='changeModel'>
+          <!-- <view class="changebtn" bindtap='changeiphone'> -->
+          <view class="changebtn" bindtap='changeMobile'>
+            更换手机型号
+            <image src='../../image/arr.png' class='arr' />
+          </view>
+
+          <!--更换手机型号弹窗  -->
+          <view class='dialogBox' wx:if="{{dialogshow}}">
+            <picker-view indicator-style="height: 50px;" value="{{value}}" bindchange="bindChange" class='pickerbox'>
+              <picker-view-column>
+                <view wx:for="{{mobileList}}" wx:key="{{index}}" data-num="{{index}}" data-id="{{item.mobile_id}}" data-text="{{item.mobile_name}}" data-type="brand">{{item.mobile_name}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{mobileList[curPhoneBrandIndex].children}}" wx:key="{{index}}" data-num="{{index}}" data-id="{{item.mobile_id}}" data-text="{{item.mobile_name}}" data-type="model">{{item.mobile_name}}</view>
+              </picker-view-column>
+            </picker-view>
+            <view class='popbtn'>
+              <button class='btn closebtn' bindtap="cancelbtn">取消</button>
+              <button class='btn okbtn' bindtap="changesure" data-id="{{item.mobile_id}}">确定</button>
+            </view>
+          </view>
+          <view class='popmask' wx:if="{{maskshow}}" bindtap='maskhide'></view>
+
+        </view>
+      </view>
+    </view>
+
+    <!--手机问题列表 S  -->
+    <view class='mobilequestion'>
+      <view class='questionBox'>
+        <view class='questiontitle'>请选择手机问题</view>
+      </view>
+      <view class='chooseFailureList'>
+        <view wx:for="{{mobileDamageList}}" wx:key="{{index}}" data-id="{{index}}" data-text="{{item.models_name}}" data-image="{{item.models_pic}}" data-num="{{index}}" class="questionLi {{combTampArrTotal[index].length? 'active' : ''}}" bindtap="showPhoneFaultList">
+          <!-- <image src='{{item.models_pic}}' /> -->
+          <view class='damage {{item.models_icon}}' style="background-image: url({{demageUrl}})"></view>
+          <text>{{item.models_name}}</text>
+          <image wx:if="{{combTampArrTotal[index].length}}" src='../../image/gou.png' class='changefault'></image>
+        </view>
+      </view>
+      <view class='nomobilelist' wx:if="{{mobileDamageList.length == 0}}">暂无手机维修项</view>
+
+      <!--选择故障问题 弹窗  -->
+      <view class='popmask' wx:if="{{detailFailureFlag}}" bindtap='questionmaskhide'></view>
+      <view class='adaptdialogbox' wx:if="{{dialogdetailFailureshow}}">
+        <view class='dadaptpopcontent'>
+          <view class="detailLi {{item.pitch? 'active' : ''}}" wx:for="{{faultDetailList}}" wx:key="{{index}}" data-id="{{item.item_id}}" data-index="{{index}}" data-price="{{item.price}}" data-text="{{item.options_name}}" catchtap="faultDetail">
+            <text data-id="{{item.id}}" data-index="{{index}}" data-price="{{item.price}}" data-text="{{item.title}}">{{item.options_name}}</text>
+            <text data-id="{{item.id}}" data-index="{{index}}" data-price="{{item.price}}" data-text="{{item.title}}" class="price">￥{{item.price}}</text>
+            <image wx:if="{{item.pitch}}" src='../../image/gou.png' class='gou'></image>
+          </view>
+        </view>
+        <view class='adaptpopbtn'>
+          <button class='btn closebtn' bindtap="cancelprobbtn">取消</button>
+          <button class='btn okbtn' bindtap="changeprobsure">确定</button>
+        </view>
+      </view>
+    </view>
+
+    <!--立即预约 S  -->
+    <view class='indexFooter'>
+      <view class='left'>
+        <text>合计：</text>
+        <text class='total'>￥{{totalPrice?totalPrice:0}}</text>
+        <text class='remark' wx:if="{{totalPrice== 0}}">(选择故障查看报价)</text>
+        <text class='remark' wx:if="{{totalPrice!= 0}}">(价格为预估，实际以检测为准)</text>
+      </view>
+      <view class='right' bindtap='goplan'>
+        立即预约
+      </view>
+    </view>
+  </view>
+  <!--登录授权  -->
+  <view class='getUserInfoBox' wx:if="{{userinfobtn}}">
+    <image class='logo' src='../../image/logo.png'></image>
+    <button class='authority' open-type='getUserInfo' bindgetuserinfo='bindgetuserinfo' lang='zh_CN'>同意授权获得用户信息</button>
+  </view>
+
+
+</view>

@@ -1,0 +1,41 @@
+<!--个人中心  -->
+<view class='container'>
+  <view class='headerbanner'>
+    <image src="{{banner[0]}}" />
+    <!-- <image src="/image/personbanner.jpg" /> -->
+  </view>
+
+  <!--用户头像姓名  -->
+  <view class='head'>
+    <view class='pic'>
+      <image src="{{avatarUrl}}" class="headepic"></image>
+    </view>
+    <view class='username'>{{nickname}}</view>
+  </view>
+
+  <view class='personbox'>
+    <view class='listbox' bindtap='toorder'>
+      <text class='iconfont icon-dingdan fl'></text>
+      <text class='words'>我的订单</text>
+      <text class='fr iconfont icon-jiantou-copy-copy'></text>
+    </view>
+    <view class='listbox' bindtap='tocoupon'>
+      <text class='iconfont icon-youhuiquan1 fl'></text>
+      <text class='words'>我的优惠券</text>
+      <text class='fr iconfont icon-jiantou-copy-copy'></text>
+    </view>
+    <view class='listbox' wx:if="{{shop_engineer}}" bindtap='toengineer'>
+      <text class='iconfont icon-dingdan fl'></text>
+      <text class='words'>管理维修订单</text>
+      <text class='fr iconfont icon-jiantou-copy-copy'></text>
+    </view>
+  </view>
+
+  <view class='footer'>
+    <view bindtap='gocall'>
+      <text class='iconfont icon-zuoji'></text>
+      <text>客户热线：400-000-000</text>
+    </view>
+  </view>
+
+</view>

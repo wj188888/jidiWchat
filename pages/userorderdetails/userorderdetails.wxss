@@ -1,0 +1,274 @@
+/* pages/userorderdetails/userorderdetails.wxss */
+
+.stateBox {
+  width: 100%;
+  height: 120rpx;
+  color: #fff;
+  font-size: 32rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25rpx;
+  box-sizing: border-box;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.orderBox {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.orderBox .boxLi {
+  width: 100%;
+  min-height: 90rpx;
+  background-color: #fff;
+  font-size: 28rpx;
+  color: #333;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eeedf2;
+}
+
+.orderBox .boxLi .liName {
+  color: #666;
+  width: 20%;
+}
+
+.orderBox .boxLi .liContent {
+  max-width: 80%;
+  min-width: 5%;
+}
+
+.orderBox .boxLi .engineerBox {
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.orderBox .boxLi .faultName {
+  max-width: 80%;
+  min-width: 20%;
+}
+
+.orderBox .boxLi .faultMoney {
+  width: 20%;
+  text-align: right;
+}
+
+.orderBox .boxLi .engineerBox .callEngineer {
+  width: 120rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  border: 1px solid #fc575a;
+  color: #fc575a;
+  font-size: 28rpx;
+  border-radius: 5px;
+  margin-left: 20rpx;
+}
+
+.wd20{
+  width: 20%;
+}
+/*手机型号  */
+
+.orderBox .titleBox {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 1px solid #eeedf2;
+}
+
+/*预计需支付金额  */
+
+.payMoney {
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #eeedf2;
+}
+
+.priceBox {
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/*预计需支付价格  */
+
+.priceBox .price {
+  font-size: 30rpx;
+  color: #ff3e34;
+  font-weight: bold;
+}
+
+.remarks {
+  width: 100%;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/*实付金额  */
+
+.actualPrice {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.actualpay {
+  color: #ff3126;
+}
+
+/*取消订单  */
+
+.cancelBox {
+  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 25rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  color: #666;
+}
+
+.cancelBox .resTxt {
+  color: #333;
+  font-weight: bold;
+}
+
+/*底部按钮  */
+
+.btnBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60rpx 25rpx;
+}
+
+.btnBox button {
+  width: 100%;
+  height: 90rpx;
+  font-size: 36rpx;
+  line-height: 90rpx;
+  border: none;
+}
+
+.okBtn {
+  background-color: #ff3126;
+  color: #fff;
+}
+
+/*付款弹窗  */
+
+.payDialog {
+  width: 80%;
+  background: #fff;
+  position: fixed;
+  border-radius: 20rpx;
+  z-index: 9999;
+  top: 23%;
+  left: 10%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  color: #333;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.closePayDialog {
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  font-size: 60rpx;
+}
+
+.qrcode {
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.qrcodeTxt {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+/*取消订单弹窗  */
+
+.canceldialog {
+  padding: 0 40rpx 40rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.cancelTitle {
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-weight: bold;
+}
+
+.closeCanceldialog {
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  font-size: 56rpx;
+}
+
+.cancelRadioGroup .radioLi {
+  display: block;
+  width: 100%;
+  height: 90rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.cancelOrderTextbox textarea {
+  width: 100%;
+  height: 300rpx;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  padding: 10rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+
+.adaptpopbtn {
+  padding: 0;
+}
+
+.adaptpopbtn .okCancelBtn {
+  width: 100%;
+  height: 90rpx;
+  background-color: #ff3126;
+  color: #fff;
+  line-height: 90rpx;
+  margin: 0;
+  margin-top: 20rpx;
+}

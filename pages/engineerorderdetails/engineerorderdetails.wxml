@@ -1,0 +1,247 @@
+<!--pages/engineerorderdetails/engineerorderdetails.wxml-->
+<!-- 工程师维修订单详情  -->
+
+<view class='container'>
+  <!-- 订单状态  S-->
+  <view class='stateBox' style="background-image:url('../../image/topBg.png')">
+    <text>{{orderDetails.orderStateCN}}</text>
+    <text wx:if="{{orderDetails.orderState != -1}}">{{orderDetails.serviceStateCN}}</text>
+  </view>
+  <!-- 订单状态  E-->
+  <!--维修中步骤  S -->
+  <view class='repairSteps' wx:if="{{orderDetails.orderState != -1}}">
+    <view class='step' wx:for="{{orderDetails.serviceStateList}}" wx:key="{{index}}">
+      <image class='stepImg' src='../../image/step.png'></image>
+      <text>{{item}}</text>
+    </view>
+  </view>
+  <!--维修中步骤  E -->
+  <!--取消订单  S-->
+  <view class='cancelBox' wx:if="{{orderDetails.orderState == -1}}">
+    <text class='resTxt'>{{orderDetails.whoCancels}}</text>
+    <view>{{orderDetails.cancelCause}}</view>
+  </view>
+  <!--取消订单  E-->
+  <!--客户信息  S-->
+  <view class='contentBox'>
+    <view class='infoList'>
+      <view class='title'>机主</view>
+      <view class='info'>
+        <text>{{orderDetails.customerName}}</text>
+        <text class='mar_l_10'>{{orderDetails.customerTel}}</text>
+      </view>
+    </view>
+    <view class='infoList'>
+      <view class='title'>服务地址</view>
+      <view class='info text_left'>
+        <text>{{orderDetails.customerAddress}}</text>
+      </view>
+    </view>
+    <view class='infoList'>
+      <view class='title'>备注</view>
+      <view class='info'>
+        <text>{{orderDetails.remark}}</text>
+      </view>
+    </view>
+    <view class='infoList'>
+      <view class='title'>预约时间</view>
+      <view class='info'>
+        <text>{{orderDetails.onsiteTime}}</text>
+      </view>
+    </view>
+  </view>
+  <!--客户信息  E-->
+  <!--故障信息  S-->
+  <view class='contentBox'>
+    <!--手机型号和品牌  -->
+    <view class='titleBox'>
+      <text>{{orderDetails.brand_name}}</text>
+      <text class='mar_10'>——</text>
+      <text>{{orderDetails.mobile_name}}</text>
+    </view>
+    <!--故障列表  -->
+    <!--待确认订单故障信息  S-->
+    <view class='unconfirmed_box' wx:if="{{damageStateObj.showConfirmOrderDamage}}">
+      <view class='faultList' wx:for="{{orderDetails.damage_items}}" wx:key="{{index}}">
+        <view class='damageName'>{{item.damageName}}</view>
+        <view class='damagePrice'>￥{{item.price}}</view>
+      </view>
+    </view>
+    <!--待确认订单故障信息  E-->
+
+    <!--已取消、已完成（待支付、已支付）订单故障信息  S  -->
+    <view class='cancel_box' wx:if="{{damageStateObj.showCompleteOrCancelDamage}}">
+      <view class='cancelList' wx:for="{{orderDetails.damage_items}}" wx:key="{{index}}">
+        <view class='cancelUp'>
+          <view class='damageName'>{{item.damageName}}</view>
+          <view>￥{{item.price}}</view>
+        </view>
+        <view class='cancelDown'>
+          <view class='arrow_top'></view>
+          <view class='fault_li' wx:for="{{item.stock}}" wx:key="{{index}}" wx:for-item="data">
+            <view class='stockName'>{{data.stockName}}</view>
+            <view>{{data.stockUse}}{{data.stockUnit}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--已取消、已完成（待支付、已支付）订单故障信息  E  -->
+
+    <!--维修中 订单故障信息  S-->
+    <!-- <view class='repairFault'> -->
+    <view class='repairFault' wx:if="{{damageStateObj.showRepairOrderDamage}}">
+      <view class='repairfaultList' wx:for="{{orderDetails.damage_items}}" wx:key="{{index}}">
+        <view class='repairfaultLi' data-index="{{index}}" bindtap='addStock'>
+          <view class='faultName'>{{item.damageName}}</view>
+          <view class='faultMoney'>
+            <text>￥{{item.price}}</text>
+            <text class='delBtn' data-index="{{index}}" catchtap='delDamage'>×</text>
+          </view>
+        </view>
+        <view class='partsList' wx:for="{{item.stock}}" wx:key="{{index}}" wx:for-item="data">
+          <text>{{data.stockName}}</text>
+          <view class='stepper'>
+            <text class='normalBtn' catchtap='bindMinus' data-index="{{index}}">-</text>
+            <input type='number' bindchange="bindPartsNum" value='{{data.stockUse}}' data-index="{{index}}"></input>
+            <text class='normalBtn' catchtap='bindPlus' data-index="{{index}}">+</text>
+          </view>
+        </view>
+      </view>
+
+      <view class='addbox'>
+        <button class='addBtn' bindtap='addDamage'>＋ 增加故障</button>
+      </view>
+    </view>
+    <!--维修中 订单故障信息  E-->
+  </view>
+  <!--故障信息  E-->
+
+  <!--故障弹窗  S-->
+  <view class='addDamageMask' wx:if='{{showdamageDialog}}'>
+    <view class='addDamageDislog' wx:if='{{showdamageDialog}}'>
+      <text class='closeDialog' bindtap='closeChangeDamage'>×</text>
+      <view class='damageDislogTitle' wx:if="{{showDamageDetails == false}}">
+        选择故障类型
+      </view>
+      <view class='damageDislogTitle' wx:if="{{showDamageDetails == true}}">
+        <view class='allDamage' bindtap='lookAllDamage'>全部故障</view>
+        <text class='arrowRight'>></text>
+        <view class='damagetype'>{{damageType}}</view>
+        <text class='arrowRight'>></text>
+      </view>
+      <!--故障类型  -->
+      <view class='damageContent' wx:if="{{showDamageDetails == false}}">
+        <view class='damagetypeLi' wx:for="{{damageList}}" wx:for-index='key' bindtap='changeDamageType' data-damageType="{{key}}" wx:key="{{key}}">{{key}}</view>
+      </view>
+      <!--故障详情  -->
+      <view class='damageContent' wx:if="{{showDamageDetails == true}}">
+        <view class='damagetypeLi demageDetailsLi' wx:for="{{damageDetailLists}}" wx:key="{{index}}" data-index="{{index}}" data-itemId="{{item.item_id}}" data-damageName="{{item.damageName}}" data-price="{{item.price}}" data-storePrice="{{item.storePrice}}"
+          data-damageDescription="{{item.damageDescription}}" bindtap="damageDetail">
+          <text data-index="{{index}}" data-itemId="{{item.item_id}}" data-damageName="{{item.damageName}}" data-price="{{item.price}}" data-storePrice="{{item.storePrice}}" data-damageDescription="{{item.damageDescription}}" class='damageNameLeft'>{{item.damageName}}</text>
+          <text data-index="{{index}}" data-itemId="{{item.item_id}}" data-damageName="{{item.damageName}}" data-price="{{item.price}}" data-storePrice="{{item.storePrice}}" data-damageDescription="{{item.damageDescription}}" class='damageprice'>￥{{item.storePrice}}</text> </view>
+      </view>
+    </view>
+  </view>
+  <!--故障弹窗 E  -->
+  <!--配件弹窗  S -->
+  <view class='addDamageMask' wx:if='{{showStockDialog}}'>
+    <view class='addDamageDislog' wx:if='{{showStockDialog}}'>
+      <text class='closeDialog' bindtap='closeChangeParts'>×</text>
+      <view class='damageDislogTitle' wx:if="{{showStockDetails == false}}">
+        选择配件类型
+      </view>
+      <view class='damageDislogTitle' wx:if="{{showStockDetails == true}}">
+        <view class='allDamage' bindtap='lookAllparts'>全部配件</view>
+        <text class='arrowRight'>></text>
+        <view class='damagetype'>{{damageType}}</view>
+        <text class='arrowRight'>></text>
+      </view>
+      <!--配件类型  -->
+      <view class='damageContent' wx:if="{{showStockDetails == false}}">
+        <view class='damagetypeLi' wx:for="{{stockList}}" wx:key="{{index}}" data-index="{{index}}" data-partsTypeName="{{item.parts_type_name}}" data-partsTypeId="{{item.parts_type_id}}" bindtap='changepartsType'>{{item.parts_type_name}}</view>
+      </view>
+      <!--配件详情  -->
+      <view class='damageContent' wx:if="{{showStockDetails == true}}">
+        <view class='damagetypeLi' wx:for="{{stockDetailLists}}" wx:key="{{index}}" data-index="{{index}}" data-partsId="{{item.parts_id}}" data-stockAttr="{{item.stockAttr}}" data-stockGuarantee="{{item.stockGuarantee}}" data-stockName="{{item.stockName}}" data-stockSn="{{item.stockSn}}"
+          data-stockUnit="{{item.stockUnit}}" catchtap="partsDetail">{{item.stockName}}</view>
+      </view>
+    </view>
+  </view>
+  <!--配件弹窗  E -->
+  <!--价格计算  S-->
+  <view class='contentBox'>
+    <view class='infoList'>
+      <view class='title'>优惠</view>
+      <view class='info'>
+        <text>-￥{{orderDetails.couponPrice}}</text>
+      </view>
+    </view>
+    <view class='orderPrice'>
+      <view class='totalPrice'>
+        <view class='title'>订单总价</view>
+        <view class='info'>
+          <text>￥{{orderDetails.orderPrice}}</text>
+        </view>
+      </view>
+      <view class='actualPrice'>
+        <text class='actualtitle'>实际支付金额</text>
+        <view class='info'>
+          <text class='price'>￥{{price}}</text>
+        </view>
+      </view>
+      <text class='remarktxt'>维修总价为预计费用，价格以最终维修价格为准</text>
+    </view>
+  </view>
+  <!--价格计算  E-->
+  <!--订单编号 下单时间  S-->
+  <view class='contentBox'>
+    <view class='infoList'>
+      <view class='title'>订单编号</view>
+      <view class='info'>
+        <text>{{orderDetails.orderid}}</text>
+      </view>
+    </view>
+    <view class='infoList'>
+      <view class='title'>下单时间</view>
+      <view class='info'>
+        <text>{{orderDetails.createTime}}</text>
+      </view>
+    </view>
+  </view>
+  <!--订单编号 下单时间  E-->
+  <view class='btnBox'>
+    <!--待确认订单  -->
+    <button class='okBtn' wx:if="{{btnStateObj.showConfirmOrderBtn}}" bindtap='orderConfirm'>确认订单</button>
+    <!--已完成订单  -->
+    <button class='okBtn' wx:if="{{btnStateObj.showConfirmPayCompleteBtn}}" bindtap='confirmPay'>确认已收款</button>
+    <button class='okBtn' wx:if="{{btnStateObj.showViewEvaluateBtn}}" bindtap='lookEvaluate'>查看评价</button>
+    <!--维修中订单  -->
+    <view class='repairbtn' wx:if="{{btnStateObj.showOrderStepBtn}}">
+      <button class='cancelBtn' bindtap='cancelOrder'>取消订单</button>
+      <button class='nextBtn' bindtap='orderNext'>下一步</button>
+    </view>
+  </view>
+
+  <!--取消订单弹窗 S  -->
+  <view class='popmask' wx:if="{{showDialogCancelOrder}}">
+    <view class='adaptdialogbox canceldialog' wx:if="{{showDialogCancelOrder}}">
+      <text class='closeCanceldialog' bindtap='closeCanceldialog'>×</text>
+      <view class='cancelTitle'>取消原因</view>
+      <view class='cancelOrdercontent'>
+        <radio-group class="cancelRadioGroup" bindchange="radioChange">
+          <label class="radioLi" wx:for="{{reson_items}}" wx:key="{{index}}">
+            <radio value="{{item.cancelCause}}" data-id="{{item.id}}" data-name="{{item.cancelCause}}" checked="{{item.checked}}" /> {{item.cancelCause}}
+          </label>
+        </radio-group>
+      </view>
+      <view class='cancelOrderTextbox'>
+        <textarea placeholder-class="phcolor" value='{{inputCause}}' maxlength='300' bindinput='causeorder' bindfocus='inputFocus'></textarea>
+      </view>
+      <view class='adaptpopbtn'>
+        <button class='okbtn' bindtap="changeorderbsure">确定</button>
+      </view>
+    </view>
+
+  </view>
+  <!--取消订单弹窗 E  -->
+</view>

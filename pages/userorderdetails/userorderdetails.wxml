@@ -1,0 +1,141 @@
+<!--pages/userorderdetails/userorderdetails.wxml-->
+<!--用户订单详情  -->
+<view class='container'>
+  <!-- 订单状态  S-->
+  <view class='stateBox' style="background-image:url('../../image/topBg.png')">
+    <text>{{orderDetails.orderStateCN}}</text>
+    <text wx:if="{{orderDetails.orderState != -1 && orderDetails.orderState !=100}}">{{orderDetails.serviceStateCN}}</text>
+  </view>
+  <!--取消订单  -->
+  <view class='cancelBox' wx:if="{{orderDetails.orderState == -1}}">
+    <text class='resTxt'>{{orderDetails.whoCancels}}</text>
+    <view>{{orderDetails.cancelCause}}</view>
+  </view>
+  <!--服务商信息  -->
+  <view class='orderBox' wx:if="{{orderDetails.orderState !=0}}">
+    <view class='boxLi'>
+      <view class='liName'>服务商</view>
+      <view class='liContent'>{{orderDetails.storeName}}</view>
+    </view>
+    <view class='boxLi'>
+      <view class='liName'>维修员</view>
+      <view class='liContent engineerBox'>
+        <view>{{orderDetails.customerName}}</view>
+        <view class='callEngineer' data-customerTel="{{orderDetails.customerTel}}" bindtap='callbtn'>联系他</view>
+      </view>
+    </view>
+  </view>
+
+  <!--订单类型  -->
+  <view class='orderBox'>
+    <view class='boxLi'>
+      <view class='liName'>订单类型</view>
+      <view class='liContent'>{{orderDetails.serviceTypeCN}}</view>
+    </view>
+    <view class='boxLi'>
+      <view class='liName'>预约时间</view>
+      <view class='liContent'>{{orderDetails.onsiteTime}}</view>
+    </view>
+  </view>
+
+  <!--手机故障  -->
+  <view class='orderBox'>
+    <!--手机型号和品牌  -->
+    <view class='titleBox'>
+      <text>{{orderDetails.brand_name}} {{orderDetails.mobile_name}}</text>
+    </view>
+    <view class='boxLi' wx:for="{{orderDetails.damage_items}}" wx:key="{{index}}" wx:for-index="key" wx:for-item="item">
+      <view class='faultName'>{{key}}</view>
+      <view class='faultMoney'>￥{{item}}</view>
+    </view>
+    <view class='boxLi'>
+      <view class='faultName'>优惠</view>
+      <view class='faultMoney'>-￥{{orderDetails.couponPrice}}</view>
+    </view>
+    <view class='payMoney'>
+      <view class='priceBox'>
+        <text>预计需支付金额</text>
+        <text class='{{orderDetails.serviceState != 20?"price":""}}'>￥{{orderDetails.orderPrice}}</text>
+      </view>
+      <view class='remarks'>
+        维修总价为预计费用，价格以最终维修价格为准
+      </view>
+    </view>
+    <view class='boxLi actualPrice' wx:if="{{orderDetails.serviceState == 20}}">
+      <view class='wd20'>实付金额</view>
+      <view class='actualpay'>￥{{price}}</view>
+    </view>
+  </view>
+
+  <!--用户信息  -->
+  <view class='orderBox'>
+    <view class='boxLi'>
+      <view class='liName'>机主</view>
+      <view class='liContent'>
+        {{orderDetails.customerName}}  {{orderDetails.customerTel}}
+      </view>
+    </view>
+    <view class='boxLi'>
+      <view class='liName'>服务地址</view>
+      <view class='liContent'>{{orderDetails.customerAddress}}</view>
+    </view>
+    <view class='boxLi'>
+      <view class='liName'>备注</view>
+      <view class='liContent'>{{orderDetails.remark}}</view>
+    </view>
+  </view>
+
+  <!--订单信息  -->
+  <view class='orderBox'>
+    <view class='boxLi'>
+      <view class='liName'>订单编号</view>
+      <view class='liContent'>{{orderDetails.orderid}}</view>
+    </view>
+    <view class='boxLi'>
+      <view class='liName'>下单时间</view>
+      <view class='liContent'>{{orderDetails.createTime}}</view>
+    </view>
+  </view>
+
+  <view class='btnBox'>
+    <!--取消订单  -->
+    <button class='okBtn' wx:if="{{btnStateObj.showCancelOrderBtn}}" bindtap='cancelOrder'>取消订单</button>
+    <!-- 立即付款  -->
+    <button class='okBtn' wx:if="{{btnStateObj.showPayCompleteBtn}}" bindtap='payment'>立即付款</button>
+    <!-- 立即评价  -->
+    <button class='okBtn' wx:if="{{btnStateObj.showEvaluateOrderBtn}}" bindtap='goEvaluate'>立即评价</button>
+    <!-- 查看评价  -->
+    <button class='okBtn' wx:if="{{btnStateObj.showViewEvaluateBtn}}" bindtap='lookEvaluate'>查看评价</button>
+  </view>
+  <!--收款二维码弹窗  -->
+  <view class='popmask' wx:if="{{showPaydialog}}">
+    <view class='payDialog' wx:if="{{showPaydialog}}">
+      <text class='closePayDialog' bindtap='closePayDialog'>×</text>
+      <image class='qrcode' src='../../image/qrcode.png'></image>
+      <text class='qrcodeTxt'>长按识别二维码付款！</text>
+      <text>成功付款后记得通知一下收款小哥哥/小姐姐哟~</text>
+    </view>
+  </view>
+
+  <!--取消订单弹窗 S  -->
+  <view class='popmask' wx:if="{{showDialogCancelOrder}}">
+    <view class='adaptdialogbox canceldialog' wx:if="{{showDialogCancelOrder}}">
+      <text class='closeCanceldialog' bindtap='closeCanceldialog'>×</text>
+      <view class='cancelTitle'>取消原因</view>
+      <view class='cancelOrdercontent'>
+        <radio-group class="cancelRadioGroup" bindchange="radioChange">
+          <label class="radioLi" wx:for="{{reson_items}}" wx:key="{{index}}">
+            <radio value="{{item.cancelCause}}" data-id="{{item.id}}" data-name="{{item.cancelCause}}" checked="{{item.checked}}" /> {{item.cancelCause}}
+          </label>
+        </radio-group>
+      </view>
+      <view class='cancelOrderTextbox'>
+        <textarea placeholder-class="phcolor" value='{{inputCause}}' maxlength='300' bindinput='causeorder' bindfocus='inputFocus'></textarea>
+      </view>
+      <view class='adaptpopbtn'>
+        <button class='okCancelBtn' bindtap="changeorderbsure">确定</button>
+      </view>
+    </view>
+  </view>
+  <!--取消订单弹窗 E  -->
+</view>

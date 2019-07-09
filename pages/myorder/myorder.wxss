@@ -1,0 +1,93 @@
+/* pages/myorder/myorder.wxss */
+
+.container {
+  padding: 0 10rpx;
+}
+
+.orderLists {
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  float: left;
+  color: #808080;
+}
+
+.orderLists .top, .orderLists .bottom {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 20rpx;
+}
+
+.orderLists .righttxt {
+  float: right;
+  margin-right: 20rpx;
+  color: #41ad31;
+}
+
+.orderLists .conter {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  align-items: center;
+}
+
+.orderLists .conter .left {
+  width: 20%;
+  height: 145rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowarp;
+}
+
+.orderLists .conter .left image {
+  width: 100%;
+  height: 130rpx;
+}
+
+.orderLists .conter .right {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.model {
+  color: #4d4d4d;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.orderLists .conter .right .prob {
+  width: 100%;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.price {
+  color: #ff3126;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+}
+
+.noorderBox {
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+  line-height: 300rpx;
+  margin-top: 20rpx;
+  color: #999;
+  font-size: 32rpx;
+}

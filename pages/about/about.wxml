@@ -1,0 +1,59 @@
+<!--pages/about/about.wxml-->
+<view class='container'>
+  <view class="content">
+    <view class="titleBox">
+      <image class="logo" src="../../image/logo.png"></image>
+      <view class="title">颠覆传统　互联网体验式手机维修服务</view>
+    </view>
+    <view class='txtBox'>机地科技有限公司（机地）成立于2014年，是一家以手机维修和维修培训为主的创新企业。以“颠覆传统手机维修行业”为宗旨，希望通过专业水平和不懈努力，重塑手机维修新标准。</view>
+    <image class='img1' src="../../image/aboutimg_01.jpg"></image>
+    <view class='txtBox'>机地手机维修连锁品牌，实体店率先入驻成都和北京，随后武汉、合肥等地也已入驻。目前成都范围内13家直营店已覆盖市区及周边区县。随着加盟项目的启动，机地手机维修实体店将蔓延到全国各省市区。让中国的百姓都能体验到高品质、透明化的手机维修服务。</view>
+    <view class='txtBox'>机地，用超越期待的服务和超越预期的体验，成为每一个客户最值得信赖的选择。机地，为百姓而生！</view>
+    <view class="imgList">
+      <image src="../../image/aboutimg_02.jpg"></image>
+      <image src="../../image/aboutimg_03.jpg"></image>
+      <image src="../../image/aboutimg_04.jpg"></image>
+      <image src="../../image/aboutimg_05.jpg"></image>
+      <image src="../../image/aboutimg_06.jpg"></image>
+    </view>
+    <view>公司理念</view>
+    <view class='txtBox'>我们没有森严的等级，每一位员工都是平等的，每一位同事都是自己的伙伴。机地崇尚创新、快速的互联网文化。我们讨厌长的会议和流程，在轻松的伙伴式工作氛围中发挥自己的能力。我们相信客户就是驱动力，我们坚持“为百姓而生”的企业理念。</view>
+  </view>
+
+  <view class="contactUsBox">
+    <view class="title">联系我们</view>
+    <view class="contactList">
+      <view class='contactLi' style="background-image:url('../../image/listbg01.jpg')">
+        <view class="name">手机维修</view>
+        <view class="telname">咨询/报价/售后</view>
+        <view class="tel">028-86759976</view>
+      </view>
+      <view class='contactLi' style="background-image:url('../../image/listbg02.jpg')">
+        <view class="name">招生咨询</view>
+        <view class="telname">联系人：张老师</view>
+        <view class="tel">13668282114</view>
+      </view>
+      <view class='contactLi' style="background-image:url('../../image/listbg03.png')">
+        <view class="name">商务合作</view>
+        <view class="telname">联系人：黄经理</view>
+        <view class="tel">13547917348</view>
+      </view>
+    </view>
+    <view>友情链接：</view>
+    <view class="herfBox">
+      <view class="herfLi">
+        <image src="../../image/icon06.png"></image>
+        <text>淘宝企业店铺</text>
+      </view>
+      <view class="herfLi">
+        <image src="../../image/icon07.png"></image>
+        <text>官网微博</text>
+      </view>
+    </view>
+    <view class="foot">
+      <view>4000-028-400</view>
+      <view>成都市青羊区童子街50号3号楼2F</view>
+    </view>
+  </view>
+
+</view>
