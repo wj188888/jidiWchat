@@ -1,0 +1,330 @@
+<!--pages/plan/plan.wxml-->
+<view class='contanier'>
+	<view class='mobileinfo clearfix'>
+		<view class='top'>
+			<view class='left'>
+				<image src=" /image/mobilepic.jpg" class="img" />
+			</view>
+			<view class='right'>
+				<text class='gzclass'><text wx:for="{{combTampArr}}" wx:key="{{index}}">{{item.text}}</text></text>
+				<view class='gzmodel'><text>型号:{{model}}{{version}}</text><text class='price'>￥{{price}}</text></view>
+			</view>
+		</view>
+		<view class='bottom'>
+			合计:<text class='total'>￥{{price}}</text>
+		</view>
+	</view>
+
+	<view class='planbox'>
+		<text class='commontitle'>请选择手机问题</text>
+
+		<view class='choosebox'>
+			<view class='litbox' bindtap='goindex'>
+				<text class='iconfont icon-shuaxin' style="color:#ff3e34; "></text> 重选故障</view>
+			<view class='litbox' bindtap='gzbtn' style='background:url(https://xcx.yunbaite.com/static/img/xcx_arr.png) left 20rpx center no-repeat; padding-left:30px;'>
+				故障列表</view>
+		</view>
+
+	</view>
+
+	<!--故障列表弹框  -->
+	<view class='popmask' wx:if="{{maskshow}}" bindtap='maskhide'></view>
+	<view class='ques-pop' wx:if="{{quespop}}">
+		<view class='gz-box'>
+			<view class='gz-bar' wx:for="{{combTampArr}}" data-text="{{item.text}}" data-grade="{{item.grade}}">
+				<text class='fl'> {{item.text}}</text>
+				<text class='fr'>￥{{item.grade}}</text>
+			</view>
+
+		</view>
+		<view class='btn-group'>
+			<button bindtap="surebtn" class='btn sure'>关闭</button>
+		</view>
+
+	</view>
+	<view class='planbox' wx:if="{{colorshow}}">
+		<text class='commontitle'>请选择机身颜色</text>
+
+		<view class='choosebox'>
+
+			<view wx:for="{{colorarr}}" data-num="{{index}}" class="litbox2" style="{{index == colorid?'background:url(https://xcx.yunbaite.com/static/img/xcx_gou.png) right bottom no-repeat; background-size:auto; border:1px solid #ff3e34; color: #ff3e34':'background:url();border:1px solid gainsboro;color:gray'}}" data-color="{{item}}" bindtap="tagChoose">{{item}}</view>
+
+		</view>
+
+	</view>
+
+	<view class='planbox2'>
+		<text class='commontitle'>请选择维修方式</text>
+		<!--维修方式tab标题  -->
+		<view class="tab-box">
+			<view class="tab-nav {{curIndex === 0?'on':''}}" bindtap="bindTap" data-index="0">
+				<text class='iconfont icon-kehu'></text>
+				<text>上门维修</text>
+				<view class='arr'> </view>
+
+			</view>
+			<view class="tab-nav {{curIndex === 1 ?'on':''}}" bindtap="bindTap" data-index="1">
+				<text class='iconfont icon-guiji'></text>
+				<text>到店维修</text>
+				<view class='arr'> </view>
+
+			</view>
+			<view class="tab-nav {{curIndex === 2 ?'on':''}}" bindtap="bindTap" data-index="2">
+				<text class='iconfont icon-youxiang'></text>
+				<text>邮寄维修</text>
+				<view class='arr'> </view>
+
+			</view>
+			<view class="tab-nav {{curIndex === 3 ?'on':''}}" bindtap="bindTap" data-index="3">
+				<text class='iconfont icon-renwu'></text>
+				<text>现场维修</text>
+				<view class='arr'> </view>
+
+			</view>
+
+		</view>
+
+	</view>
+	<!-- tab内容   -->
+	<view class="tab-content">
+		<!--上门维修  -->
+		<view wx:if="{{curIndex === 0}}" class='visit'>
+
+			<view class='top'>
+				<view class='notice'> 30分钟上门服务</view>
+
+				<view class='listbox' bindtap='chooseaddre'>
+					<view class='addre1' style="display:{{display1}} ">
+						<text class='iconfont icon-dizhi fl'></text>
+						<text class='words'>请选择服务地址</text>
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+					</view>
+					<view class='addre2' style="display:{{display2}} ">
+						<text class='iconfont icon-dizhi fl'></text>
+						<text class='words2  text_color'>
+          
+             <text style='display:block'>{{name}}{{tel}}</text>
+						<text>{{ province}}{{city}}{{area}}{{address}}</text>
+
+						</text>
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+					</view>
+				</view>
+				<view class='listbox' bindtap='timeclk'>
+					<text class='iconfont icon-shijian1 fl'></text>
+
+					<input placeholder='请选择上门时间' value='{{servicetime}}' class='text-input' name="name" disabled='true'></input>
+					<text class='fr iconfont icon-jiantou-copy-copy'></text>
+				</view>
+
+				<view class='listbox' bindtap='couponclk'>
+					<text class='iconfont icon-youhuiquan1 fl'></text>
+					<input placeholder='请选择优惠券' value='{{couponName}}' class='text-input' name="name" disabled='true'></input>
+
+					<text class='fr iconfont icon-jiantou-copy-copy'></text>
+				</view>
+				<view class='listbox remark'>
+					<label>备注:</label> <input type='text' placeholder='在此输入你的留言' value='{{remark}}' bindinput="remarkInput"></input>
+				</view>
+
+			</view>
+			<view class='center'>
+
+				<view class='descr'>
+					<text> 温馨提示</text>
+					<view>1. 具体上门时间以工程师预约为准</view>
+					<view>2. 具体上门时间以工程师预约为准</view>
+					<view> 3. 具体上门时间以工程师预约为准</view>
+
+				</view>
+			</view>
+
+			<button class='wxbtn' bindtap='visitgo' data-type='上门维修' data-typenum="1" data-door="1">立即维修</button>
+		</view>
+		<!--到店维修  -->
+		<view wx:if="{{curIndex === 1}}">
+			<form bindsubmit="storego" report-submit="true" data-type="到店维修" data-typenum="2">
+
+				<view class='top'>
+					<view class='notice'>到店。。。</view>
+					<view class='listbox'>
+						<text class='iconfont icon-tubiaozhizuomoban fl'></text>
+						<input placeholder='请填写您的姓名' value='' class='text-input' name="name"></input>
+
+					</view>
+					<view class='listbox'>
+						<text class='iconfont icon-dianhua fl'></text>
+						<input placeholder='请填写您的联系方式' value='' class='text-input' name="tel" id='tel'></input>
+
+					</view>
+					<view class='listbox' bindtap='tochoosestore'>
+
+						<text class='iconfont icon-mendian1 fl'></text>
+
+						<input placeholder='请选择门店' value='{{storename}}' class='text-input'  name="storename" disabled='true'></input>
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+
+					</view>
+					<view class='listbox' bindtap='couponclk'>
+						<text class='iconfont icon-youhuiquan1 fl'></text>
+						<input placeholder='请选择优惠券' value='{{couponName}}' class='text-input'  disabled='true'></input>
+
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+					</view>
+
+					<view class='listbox remark'>
+						<label>备注:</label> <input type='text' placeholder='在此输入你的留言' value='{{remark}}' bindinput="remarkInput"></input>
+					</view>
+
+				</view>
+				<view class='center'>
+
+					<view class='descr'>
+						<text> 温馨提示</text>
+						<view>1. 具体上门时间以工程师预约为准</view>
+						<view>2. 具体上门时间以工程师预约为准</view>
+						<view> 3. 具体上门时间以工程师预约为准</view>
+					</view>
+				</view>
+
+				<button class='wxbtn' form-type='submit'>立即维修</button>
+			</form>
+		</view>
+		<!--邮寄维修  -->
+		<view wx:if="{{curIndex === 2}}">
+			<view class='top'>
+				<view class='notice'> 邮寄。。。。</view>
+				<view class='listbox' bindtap='chooseaddre'>
+					<view class='addre1' style="display:{{display1}} ">
+						<text class='iconfont icon-dizhi fl'></text>
+						<text class='words'>请选择服务地址</text>
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+					</view>
+					<view class='addre2' style="display:{{display2}} ">
+						<text class='iconfont icon-dizhi fl'></text>
+						<text class='words2 text_color'>
+          
+             <text style='display:block'>{{name}}{{tel}}</text>
+						<text>{{ province}}{{city}}{{area}}{{address}}</text>
+
+						</text>
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+					</view>
+				</view>
+
+				<view class='listbox' bindtap='couponclk'>
+					<text class='iconfont icon-youhuiquan1 fl'></text>
+					<input placeholder='请选择优惠券' value='{{couponName}}' class='text-input' disabled='true'></input>
+
+					<text class='fr iconfont icon-jiantou-copy-copy'></text>
+				</view>
+				<view class='listbox remark'>
+					<label>备注:</label> <input type='text' placeholder='在此输入你的留言' value='{{remark}}' bindinput="remarkInput"></input>
+				</view>
+
+			</view>
+			<view class='center'>
+
+				<view class='descr'>
+					<text> 温馨提示</text>
+					<view>1. 具体上门时间以工程师预约为准</view>
+					<view>2. 具体上门时间以工程师预约为准</view>
+					<view> 3. 具体上门时间以工程师预约为准</view>
+
+				</view>
+			</view>
+
+			<button class='wxbtn' bindtap='yjgo' data-type='邮寄维修' data-typenum="3">立即维修</button>
+
+		</view>
+		<!--现场维修  -->
+		<view wx:if="{{curIndex === 3}}">
+			<form bindsubmit="xianchanggo" report-submit="true" data-type="现场维修" data-typenum="4">
+
+				<view class='top'>
+					<view class='notice'>现场</view>
+					<view class='listbox'>
+						<text class='iconfont icon-tubiaozhizuomoban fl'></text>
+						<input placeholder='请填写您的姓名' value='' class='text-input' name="name"></input>
+
+					</view>
+					<view class='listbox'>
+						<text class='iconfont icon-dianhua fl'></text>
+						<input placeholder='请填写您的联系方式' value='' class='text-input' name="tel" id='tel'></input>
+
+					</view>
+					 <view class='listbox' bindtap='tochoosestore'>
+
+						<text class='iconfont icon-mendian1 fl'></text>
+						<input placeholder='请选择门店' value='{{storename}}' name="storename" class='text-input' disabled='true'></input>
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+
+					</view> 
+					<view class='listbox' bindtap='chooseworker'>
+						<text class='iconfont icon-gongchengshi fl'></text>
+
+						<input placeholder='请选择工程师' value='{{worker}}' name="worker" class='text-input'  disabled='true'></input>
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+					</view>
+					<view class='listbox' bindtap='couponclk'> 
+						<text class='iconfont icon-youhuiquan1 fl'></text>
+						<input placeholder='请选择优惠券' value='{{couponName}}' class='text-input' disabled='true'></input>
+
+						<text class='fr iconfont icon-jiantou-copy-copy'></text>
+					</view>
+
+					<view class='listbox remark'>
+						<label>备注:</label> <input type='text' placeholder='在此输入你的留言' value='{{remark}}' bindinput="remarkInput"></input>
+					</view>
+
+				</view>
+				<view class='center'>
+
+					<view class='descr'>
+						<text> 温馨提示</text>
+						<view>1. 具体上门时间以工程师预约为准</view>
+						<view>2. 具体上门时间以工程师预约为准</view>
+						<view> 3. 具体上门时间以工程师预约为准</view>
+
+					</view>
+				</view>
+
+				<button class='wxbtn' form-type='submit'>立即维修</button>
+			</form>
+
+		</view>
+
+	</view>
+
+	<!--上门时间弹框  -->
+	<view class='time-pop ques-pop' wx:if="{{timepop}}">
+		<picker-view indicator-style="height: 50px;" value="{{value}}" bindchange="bindChange" class='pickerbox'>
+			<picker-view-column>
+				<view wx:for="{{yearmonth}}" style="line-height: 50px">{{item}}</view>
+
+			</picker-view-column>
+			<picker-view-column>
+				<view wx:for="{{hours}}" style="line-height: 50px">{{item}}</view>
+			</picker-view-column>
+
+		</picker-view>
+		<view class='btn-group'>
+			<button bindtap="cancelbtn" class='btn fl'>取消</button>
+			<button bindtap="timesure" class='btn sure fr'>确定</button>
+		</view>
+	</view>
+	<!--工程师傅弹框  -->
+	<view class='master-pop ques-pop' wx:if="{{masterpop}}">
+		<picker-view indicator-style="height: 50px;" value="{{value2}}" bindchange="bindChangeworker" class='pickerbox'>
+			<picker-view-column>
+				<view wx:for="{{workerlist}}" data-name='{{nickname}}' style="line-height: 50px">{{item.nickname}}</view>
+
+			</picker-view-column>
+
+		</picker-view>
+		<view class='btn-group'>
+			<button bindtap="cancelbtn" class='btn fl'>取消</button>
+			<button bindtap="workersure" class='btn sure fr'>确定</button>
+		</view>
+	</view>
+</view>

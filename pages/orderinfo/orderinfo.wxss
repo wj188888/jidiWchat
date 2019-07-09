@@ -1,0 +1,21 @@
+/* pages/orderinfo/orderinfo.wxss */
+.ozt{ line-height: 90rpx;padding: 0 30rpx; box-sizing: border-box; background: #fff; margin-top: 20rpx; width: 100%; float: left; font-size: 32rpx}
+.bgbox{ width: 100%; background: #fff; margin-top: 20rpx; float: left}
+.bgbox .title{ padding: 20rpx 30rpx; box-sizing: border-box; border-bottom: 1px solid #ccc; font-size: 30rpx; color: #4d4d4d}
+.bgbox .title text{ display: inline-block; height: 100%; border-left: 9rpx solid #ff3e34;padding-left:20rpx}
+.green{ color: #43b332}
+.bgbox .list{ padding: 20rpx 30rpx; box-sizing: border-box}
+.bgbox .list .bar{ line-height: 50rpx}
+.bgbox .list .bar text{ color:#b3b3b3}
+.bgbox .bar2{ color: #ff3e34; width: 100%; float: left; line-height: 70rpx;padding: 0 30rpx; border-top: 1px solid #ccc; box-sizing: border-box; font-size: 30rpx}
+.bgbox .bz{ padding: 0 30rpx; box-sizing: border-box; color: #999; padding-bottom: 20rpx}
+.wordsbox{width: 100%; padding: 30rpx; box-sizing: border-box; padding-bottom: 0 }
+.wordsbox textarea{ width: 100%; height:200rpx; border: 1px solid #ff3e34; border-radius: 5px; padding: 20rpx; box-sizing: border-box}
+.btngroup{ width: 100%; box-sizing: border-box; padding: 30rpx;background: #fff;float: left; position: fixed; left: 0;bottom: 0; text-align: center}
+.btngroup .btn{ width: 45%; background: #ccc;color: #fff; font-size: 30rpx}
+.btngroup .fr{ background: #ff3e34}
+.radio-group{ box-sizing: border-box; width: 100%; float: left }
+.radio-group label { display: block; width: 100%;  font-size: 30rpx; line-height: 22px; float: left; margin-top: 20rpx}
+.radio-group label radio{float: left; margin-top: -2px}
+.reson-pop{ padding:20rpx 40rpx; box-sizing: border-box; height: auto}
+.reson-pop textarea{ width: 100%; float: left; height: 150rpx;border: 1px solid #ccc;border-radius: 5px; padding: 20rpx; box-sizing: border-box}

@@ -1,0 +1,101 @@
+<!--index.wxml-->
+<!--banner  -->
+<view class='contanier'>
+
+<swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+	<block wx:for="{{imgUrls}}" wx:key="{{index}}">
+		<swiper-item>
+			<image src="{{item}}" class="slide-image" width="100%" />
+		</swiper-item>
+	</block>
+</swiper>
+<!--头像  -->
+
+<view class='headpic' bindtap='toperson'>
+   <image src="{{userInfo.avatarUrl}}" class="img"></image>
+</view>
+
+<!--当前设备信息  -->
+<view class='device-box'>
+	<text class='sbtitle'>当前设备信息</text>
+	<view class='device-model'>
+		<image src="{{mobilepic}}" class="mobilepic" />
+		<view class='mobileinfo'>
+    	<text>检测到你的手机</text>
+			<text>型号：{{model}} {{version}}</text>
+		
+		</view>
+		<!--更换型号按钮  -->
+		<view class='change-model' bindtap='changebtn'>
+			更换手机型号
+			<image src="../../image/arr.png" class='arr'></image>
+		</view>
+	</view>
+</view>
+
+<view class='change-pop' wx:if="{{changeshow}}">
+	<picker-view indicator-style="height: 50px;" value="{{value}}" bindchange="bindChange" class='pickerbox'>
+	  <picker-view-column>
+  
+  <view wx:for="{{brandArr}}" wx:key="{{index}}" data-num="{{index}}"  data-id="{{item.id}}" data-text="{{item.title}}" data-type="brand" bindtap="select_brand">{{item.title}}</view>    
+    
+  </picker-view-column>
+  <picker-view-column>
+      <view wx:for="{{modelArr}}"  wx:key="{{index}}"  data-num="{{index}}"   data-id="{{item.id}}" data-text="{{item.title}}" data-type="model" bindtap="select_brand">{{item.title}}</view>  
+  </picker-view-column>
+
+	</picker-view>
+	<view class='btn-group'>
+		<button bindtap="cancelbtn" class='btn fl'>取消</button>
+		<button bindtap="changesure" class='btn sure fr'  data-id="{{item.modelID}}">确定</button>
+	</view>
+</view>
+<view class='popmask' wx:if="{{maskshow}}" bindtap='maskhide'></view>
+
+<view class='mobile-question'>
+	<text class='commontitle'>请选择手机问题</text>
+
+
+  <view class="chooseFailureList">
+    <view wx:for="{{chooseFailureList}}" wx:key="{{index}}" data-image="https://xcx.yunbaite.com{{item.picture}}" data-id="{{item.id}}" data-text="{{item.title}}" data-num="{{index}}" class="{{item.class ? 'active' : ''}}" bindtap="select_chooseFailureList">
+	<image src="https://xcx.yunbaite.com{{item.picture}}" class="icon-img" data-image="https://xcx.yunbaite.com{{item.picture}}" data-id="{{item.id}}" data-text="{{item.title}}"  data-num="{{index}}"  bindtap="select_chooseFailureList"/>
+	<text class='text' data-id="{{item.id}}" data-text="{{item.title}}"  data-num="{{index}}"  bindtap="select_chooseFailureList"> {{item.title}}</text>
+
+</view>
+  </view>
+
+</view>
+
+
+
+<!--弹窗-->
+<view class="detailFailureCon" hidden="{{detailFailureFlag ? true : false}}">
+  <view class="detailFailure">
+
+    <view class="detailFailure_content">
+      <view wx:for="{{detailFailureArr}}" wx:key="{{index}}" data-ChooseFailureid="{{item.id}}" data-num="{{index}}" data-grade="{{item.price}}" data-text="{{item.title}}" data-pid="{{item.pid}}" class="{{item.class ? 'active' : ''}}" catchtap="select_detailFailur">
+        <text   data-ChooseFailureid="{{item.id}}" data-num="{{index}}" data-grade="{{item.price}}" class="{{item.class ? 'active' : ''}}" data-text="{{item.title}}" data-pid="{{item.pid}}" catchtap="select_detailFailur">{{item.title}}</text>
+        <text class="fr" style='float:right'   data-ChooseFailureid="{{item.id}}" data-num="{{index}}" data-grade="{{item.price}}" data-text="{{item.title}}" data-pid="{{item.pid}}" class="{{item.class ? 'active' : ''}}" catchtap="select_detailFailur">￥{{item.price}}</text>
+      </view>
+    </view>
+
+
+	<view class='btn-group'>
+		<button bindtap="cancel" class='btn fl'>取消</button>
+		<button bindtap="confirm" class='btn sure fr'>确定</button>
+	</view>
+
+  </view>
+</view>
+
+<!--底部  -->
+<view class='index-footer'>
+<view class='left'>
+合计:<text class='total'>￥{{price}} </text>
+<text class='bz'>（选择故障查看报价）</text>
+</view>
+<view class='right' bindtap='goplan'>
+  立即预约
+</view>
+</view>
+</view>

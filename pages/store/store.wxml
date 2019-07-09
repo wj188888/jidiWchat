@@ -1,0 +1,34 @@
+<!--pages/store/store.wxml-->
+
+<view class='contanier'>
+  <view class='search'>
+    <view class='search-box'>
+      <text class='iconfont icon-sousuo' bindtap='search_btn'></text>
+      <input type='text' placeholder='请输入你要找寻的内容' value="{{search_tit}}" bindinput="searchValueInput"></input>
+    </view>
+  </view>
+  <scroll-view scroll-y = true bindscrolltolower="loadMore" bindscrolltoupper="refesh">
+    <view class='storelist' wx:for="{{storelist}}" data-id="{{item.id}}"  data-name="{{item.nickname}}" data-addre="{{item.address}}" data-distance="{{item.distance}}">
+      <view class='top'  data-id="{{item.id}}"  data-name="{{item.nickname}}" data-addre="{{item.address}}" data-distance="{{item.distance}}" bindtap='storechoose'>
+        <view class='img'>
+          <image src='https://xcx.yunbaite.com{{item.logo}}'/>
+        </view>
+        <view class='center'>
+          <text class='storename'>{{item.nickname}}</text>
+          <text class='storeaddre ellipsis'>{{item.address}}</text>
+          <text class='time'>营业时间：{{item.service_date}}</text>
+        </view>
+        <view class='distance'>
+      {{item.distance}}km
+        </view>
+      </view>
+      <view class='bottom'> 
+         <view class='left' bindtap='callbtn' data-tel="{{item.mobile}}"><text class='iconfont icon-dianhua'></text>电话联系</view>
+         <view class='right' bindtap='mapbtn' data-lat="{{item.lat}}" data-lng="{{item.lng}}"><text class='iconfont icon-dizhi'></text>查看地图</view>
+      </view>
+    </view>
+
+  </scroll-view>
+  
+
+</view>

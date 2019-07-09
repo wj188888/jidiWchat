@@ -1,0 +1,67 @@
+<!--pages/coupon/coupon.wxml-->
+<view class='contanier coupon'>
+  <view class="tab-box">
+    <view class="tab-nav {{curIndex === 0 ?'on':''}}" bindtap="bindTap" data-index="0">
+      <text>可用券({{cancoupon}})</text>
+
+    </view>
+    <view class="tab-nav {{curIndex === 1 ?'on':''}}" bindtap="bindTap" data-index="1">
+      <text>已用券（{{endcoupon}}）</text>
+
+    </view>
+
+  </view>
+  <view class="tab-content">
+
+    <view wx:if="{{curIndex === 0}}" class='couponlist'>
+      <view class=" " style="{{currentItem ==item.list_id?'background:url(https://xcx.yunbaite.com/static/img/gou2.png) right 2px bottom no-repeat; background-size:30px auto;':'background:url();'}}" wx:for="{{couponlist}}" wx-index="index" data-id="{{item.list_id}}"
+        data-money="{{item.money}}" data-status="{{item.status}}" data-name="{{item.c_name}}" data-type="{{item.type}}" data-time="{{item.create_time}}" data-code="{{item.code}}" data-end_time="{{item.end_time}}" catchtap='couponclk'>
+        <view class='left' bindtap='couponclk'>
+          <view class='num'>
+            {{item.money}}
+            <text>元</text>
+          </view>
+          <view class='sy'>
+            {{item.type}}
+          </view>
+        </view>
+        <view class='right'>
+          <view class='name'>{{item.c_name}}</view>
+          <view class='where'>{{item.where}}</view>
+          <view class='time'>使用时间:{{item.create_time}}—{{item.end_time}}</view>
+
+        </view>
+        <view>
+
+        </view>
+        <image src='../../image/tbar.png' class='bg'></image>
+      </view>
+
+    </view>
+
+    <view wx:if="{{curIndex === 1}}" class='couponlist couponlist2'>
+      <view class=" " wx:for="{{couponlist2}}" wx-index="index" data-id="{{item.list_id}}" data-money="{{item.money}}" data-status="{{item.status}}" data-name="{{item.c_name}}" data-type="{{item.type}}" data-time="{{item.create_time}}" data-code="{{item.code}}"
+        data-end_time="{{item.end_time}}">
+        <view class='left'>
+          <view class='num'>
+            {{item.money}}
+            <text>元</text>
+          </view>
+          <view class='sy'>
+            {{item.type}}
+          </view>
+        </view>
+        <view class='right'>
+          <view class='name'>{{item.c_name}}</view>
+          <view class='where'>{{item.where}}</view>
+          <view class='time'>使用时间:{{item.create_time}}—{{item.end_time}}</view>
+
+        </view>
+        <view>
+
+        </view>
+        <image src='../../image/tbar2.png' class='bg'></image>
+      </view>
+    </view>
+  </view>
+</view>

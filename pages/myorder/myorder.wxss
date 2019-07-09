@@ -1,0 +1,9 @@
+/* pages/myorder/myorder.wxss */
+.orderlist{ width: 100%;background: #fff;border-radius: 10px; margin-top: 20rpx; box-sizing: border-box; float: left;color: #808080}
+.orderlist .top,.orderlist .bottom{ line-height: 80rpx; height: 80rpx; padding: 0 20rpx; width: 100%;box-sizing: border-box; float: left; }
+.orderlist .center{ padding: 20rpx; box-sizing: border-box; width: 100%; float: left; border-bottom: 1px solid #ccc;border-top: 1px solid #ccc}
+.orderlist .center .left{ width: 145rpx; height: 145rpx; float: left; text-align: center; border: 1px solid #ccc; margin-right: 20rpx}
+.orderlist .center .left image{ width: 60rpx; height: 130rpx; margin-top: 8rpx}
+.green{ color: #41ad31}
+.price{color:#ff3126; margin-left: 10rpx; font-size: 30rpx;}
+.model{ color: #4d4d4d;font-size: 30rpx}

@@ -1,0 +1,29 @@
+<!--pages/myorder/myorder.wxml-->
+<view class='contanier'>
+	<view class='orderlist' wx:for="{{ myorderlist}}" data-order_id="{{item.order_id}}" data_num="{{item.order_sn}}">
+		<view class='top'>
+			<text class='fl'>订单号：{{item.order_sn}}</text>
+			<text class='fr green'>{{item.status}}</text>
+		</view>
+		<view class='center'>
+			<view class='left'>
+				<image src='../../image/mobilepic.jpg' />
+			</view>
+			<view class='right'>
+				<view class='model'>{{item.model}}{{item.version}}</view>
+				<view class='prob'>
+					{{item.fault}}
+				</view>
+			</view>
+		</view>
+		<view class='bottom'>
+			订单合计:<text class='price'>¥{{item.order_price}}</text>
+		
+			<text class='fr green' bindtap='order_view' data-order_id="{{item.order_id}}"  data-status="{{item.status}}">查看订单详情</text>
+		</view>
+
+	</view>
+
+  
+  
+</view>

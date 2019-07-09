@@ -1,0 +1,62 @@
+<!--pages/ordersuccess/ordersuccess.wxml-->
+<view class='contanier'>
+
+	<view class='success'>
+		<image src='../../image/order.png' class='icon'></image>
+		<view class='text'>订单提交成功</view>
+	</view>
+	<view class='info'>
+
+		<text class='ordernum ellipsis'>订单号：{{order_sn}}</text>
+		<text>订单金额:<text class='price'>¥{{price}}</text></text>
+		<text class='order-type'>类型：{{tabid}}</text>
+ 
+	</view>
+	<view class='txbox'>
+		<view class='fl'>
+			<image src='../../image/gtan.png' class='gtan' />
+		</view>
+		<view class='fr'>
+			<text>您已成功预约机地{{tabid}}服务，具体事宜请咨询机地客服</text>
+    
+		</view>
+
+	</view>
+
+	<view class='orderinfo'>
+ 
+  <!--上门维修  -->
+      <view wx:if="{{gohome_show}}">
+        <view>联系人：{{name}}　{{tel}} </view>
+   	  	<view>上门时间：{{door_time}}</view>
+        <view>服务地址：{{ province}}{{city}}{{area}}{{address}}</view>
+      </view>
+       <!--到店维修  -->
+   <view wx:if="{{gostore_show}}">
+   		<view>服务时间：{{service_date}}</view>
+      <view>联系电话：{{storetel}} </view>
+      <view>门店名称：{{storename}}</view>
+      <view>门店地址：{{storeaddre}}</view>
+   </view>
+        <!--邮寄维修  -->
+      <view wx:if="{{yj_show}}">
+        <view>联系人：{{name}}　{{tel}} </view>
+        <view>服务地址：{{ province}}{{city}}{{area}}{{address}}</view>
+      </view>
+      <!--现场维修  -->
+      <view wx:if="{{xc_show}}">
+        <view>联系人：{{name}}　{{tel}}</view>
+        <view>门店地址：{{storeaddre}}</view>
+         <view>工程师：{{worker}}</view>
+      </view>
+
+
+	</view>
+  <view class='clear'></view>
+
+	<view class='btngroup'>
+		<button class='btn fl' bindtap="goindex">返回首页</button>
+		<button class='btn fr' bindtap='seeorder'>查看订单</button>
+
+	</view>
+</view>

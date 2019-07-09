@@ -1,0 +1,142 @@
+<!--pages/orderinfo/orderinfo.wxml-->
+<view class='contaniner'>
+	<view class='ozt'>
+		<text class='fl'>订单状态</text>
+		<text class='fr green'>{{status}} </text>
+	</view>
+	<view class='bgbox'>
+		<view class='title'><text>订单编号：{{ordernum}}</text></view>
+		<view class='list'>
+			<view class='bar'>
+				<text>设备型号：</text>{{model}}{{version}}
+			</view>
+
+			<view class='bar' wx:for="{{falut}}">
+				<text>维修项目：</text>{{item.title}}
+			</view>
+			<view class='bar'>
+				<text>维修方式：</text> {{tabid}}
+			</view>
+			<view class='bar'>
+				<text>下单时间：</text> {{add_time}}
+			</view>
+		</view>
+		<view class='bar2'>
+			<text class='fl'>维修价格</text>
+			<text class='fr'>¥{{order_price}}</text>
+		</view>
+		<view class='bar2'>
+			<text class='fl'>优惠券</text>
+			<text class='fr'>-¥{{coupon}}</text>
+		</view>
+		<view class='bar2'>
+			<text class='fl'>预计需支付</text>
+			<text class='fr'>¥{{actual_price}}</text>
+		</view>
+		<view class='bz'>
+
+			维修总价为预计费用，价格以最终维修方案为准</view>
+	</view>
+	<view class='bgbox'>
+		<view class='title'><text>服务信息</text></view>
+		<view class='list'>
+
+			<!--上门-->
+			<view wx:if="{{visti_show}}">
+
+				<view class='bar'>
+					<text>联系人：</text>{{name}}　{{tel}}
+				</view>
+				<view class='bar'>
+					<text>上门时间：</text>{{door_time}}
+				</view>
+				<view class='bar'>
+					<text>服务地址：</text>{{province}}{{city}}{{area}}{{address}}
+				</view>
+			</view>
+			<!--到店 -->
+			<view wx:if="{{gostore_show}}">
+				<view class='bar'>
+					<text>门店地址：</text>{{dea_address}}
+				</view>
+				<view class='bar'>
+					<text>门店名称：</text>{{dea_nickname}}
+				</view>
+				<view class='bar'>
+					<text>门店电话：</text>{{dea_mobile}}
+				</view>
+
+			</view>
+			<!--邮寄 -->
+			<view wx:if="{{yj_show}}">
+				<view class='bar'>
+					<text>联系人：</text>{{name}}　{{tel}}
+				</view>
+				<view class='bar'>
+					<text>服务地址：</text>{{province}}{{city}}{{area}}{{address}}
+				</view>
+			</view>
+
+			<!--现场 -->
+			<view wx:if="{{xc_show}}">
+				<view class='bar'>
+					<text>联系人：</text>{{name}}　{{tel}}
+				</view>
+				<view class='bar'>
+					<text>门店地址：</text>{{dea_address}}
+				</view>
+
+				<view class='bar'>
+					<text>工程师：</text>{{eng_name}}
+				</view>
+
+			</view>
+
+		</view>
+	</view>
+<view style='padding-bottom:100px;width:100%; float:left'>
+	<view class='bgbox'>
+		<view class='title'><text>留言</text></view>
+		<view class='list'>
+			<view class='bar'>
+				<text>留言内容：</text>{{remark}}
+
+			</view>
+
+		</view>
+
+
+	</view>
+  	<view class='bgbox' wx:if="{{rensonshow}}" style='padding:10px 20rpx;box-sizing:border-box'>
+			<text style='color:#b3b3b3'>取消原因：</text>{{cancel_reason}}
+
+
+	</view>
+</view>
+  </view>
+  
+  	<view class='btngroup' wx:if="{{groupshow}}">
+			<button class=' btn' bindtap='cancelorder' wx:if="{{cancelbtnshow}}">取消订单</button>
+			<button class=' btn' bindtap='paybtn' wx:if="{{paybtnshow}}">付款</button>
+
+		</view>
+
+	<!--取消订单弹框  -->
+	<view class='popmask' wx:if="{{maskshow}}" bindtap='maskhide'></view>
+	<view class='ques-pop reson-pop' wx:if="{{maskshow}}">
+		<scroll-view scroll-y style="height: 220px;">
+			<radio-group class="radio-group" bindchange="radioChange">
+				<label class="radio" wx:for="{{reson_items}}">
+    <radio value="{{item.name}}" data-id="{{item.id}}" checked="{{item.checked}}"/>
+   <text> {{item.name}}</text>
+  </label>
+			</radio-group>
+		</scroll-view>
+	  <textarea   bindblur="bindTextAreaBlur" placeholder="其他...." value='{{remark2}}' />
+
+		<view class='btn-group'>
+			<button bindtap="cancelbtn" class='btn fl'>取消</button>
+			<button bindtap="surebtn" class='btn sure fr'>确定</button>
+		</view>
+
+	</view>

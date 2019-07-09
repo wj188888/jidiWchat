@@ -1,0 +1,18 @@
+/* pages/ordersuccess/ordersuccess.wxss */
+.contanier{ padding:0 20rpx; }
+.success{ text-align: center}
+.success .icon{ width: 105rpx; height: 109rpx; margin-top: 20rpx; margin-bottom: 40rpx}
+.success .text{ font-size: 48rpx}
+.info{ margin:30rpx 0; text-align: center; float: left; width: 100%}
+.info>text{ display: inline-block; width: 33.3%;color: #7d7d7d; box-sizing: border-box; float: left}
+.info text .price{ color: #ff3126; margin-left: 10px}
+.txbox{ width: 100%; border: 1px solid #ff3126; border-radius: 10px; float: left;padding: 20rpx; box-sizing: border-box; background: #fff7f7; color: #ff3126; margin-bottom: 60rpx}
+.txbox .fl{ width:90rpx; float: left}
+.txbox .fl .gtan{ width: 90rpx; height: 90rpx;}
+.txbox .fr{ width: 80%; line-height: 50rpx}
+.btngroup{ margin-top: 100rpx; width: 100%; float: left}
+.btngroup .btn{ width: 46%; border: 1px solid #ff3126; color: #ff3126; height: 87rpx; font-size: 32rpx; text-align: center}
+.btngroup .fr{ background: #ff3126; color: #fff}
+.orderinfo view{ line-height: 50rpx}
+
+.orderinfo{ width: 100%; float: left}

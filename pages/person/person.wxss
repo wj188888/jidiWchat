@@ -1,0 +1,33 @@
+/* pages/person/person.wxss */
+Page { background: #fff}
+.headbanner image{ width: 100%; height: 290rpx}
+.head{ width: 100%; text-align: center; position: absolute; left: 0;top:205rpx;}
+.head .pic{ width: 170rpx; height: 170rpx; border-radius: 50%; margin: 0 auto; background:#fff; margin-bottom: 20rpx; overflow: hidden}
+.headepic{ width:100%; height:100%;}
+.personbox{ margin-top: 200rpx; background: #fff; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc}
+.personbox .listbox{
+     width: 100%;
+     height: 90rpx;
+     line-height: 90rpx;
+   
+     padding:0 30rpx;
+     box-sizing: border-box;
+     background: #fff
+   }
+.personbox .listbox .fl{
+  font-size: 22px;
+  color: #ff3e34;
+  margin-right: 30rpx;
+  float: left
+}
+.personbox .listbox .fr{
+  float: right
+}
+.personbox .listbox .words{
+  font-size: 30rpx;
+  color: #4d4d4d;
+  float: left;
+
+}
+.footer{ width: 100%; line-height: 120rpx; position: fixed; left: 0; bottom: 0; text-align: center; font-size: 36rpx;color: #808080}
+.footer .iconfont{ font-size: 26px; color: #ff3e34; margin-right: 20rpx}

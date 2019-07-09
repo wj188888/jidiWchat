@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/plan/plan",
+    "pages/person/person",
+    "pages/store/store",
+    "pages/coupon/coupon",
+    "pages/ordersuccess/ordersuccess",
+    "pages/myorder/myorder",
+    "pages/orderinfo/orderinfo",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1f1f1f",
+    "navigationBarTextStyle": "#fff",
+    "backgroundTextStyle": "light"
+  }
+}

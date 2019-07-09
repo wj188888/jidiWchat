@@ -1,0 +1,18 @@
+/* pages/coupon/coupon.wxss */
+.coupon{ padding: 20rpx; box-sizing: border-box}
+.tab-box{ height: 60rpx; border-radius: 5px; border: 1px solid #ff3126; line-height: 60rpx; text-align: center; background: #fff}
+.tab-box .tab-nav{ width: 50%; float: left}
+.tab-box .tab-nav.on{ background: #ff3126; color: #fff}
+.couponlist{ width: 100%; float: left}
+.couponlist>view{ margin-top: 30rpx; width: 100%; padding: 20rpx; box-sizing: border-box; position: relative; color: #fff; float: left;}
+.couponlist .bg{ width: 100%; height: 100%; position: absolute; left: 0;top: 0;z-index: -1}
+.couponlist .left{ width: 32%; float: left; text-align: center}
+.couponlist .left .num{ font-size: 46rpx;}
+.couponlist .left .num text{ font-size: 24rpx}
+.couponlist .left .sy{ color:#e8e34f}
+.couponlist .right{ width: 68%; float: right; color: #b3b3b3; padding-left: 20rpx; box-sizing: border-box}
+.couponlist .right .name{ color: #ff3126;font-size: 30rpx}
+.couponlist2,.couponlist2 .left .sy,.couponlist2 .right .name{ color: #b3b3b3;}
+.couponlist>view.active{ background: red}
+.couponlist .normal{ display: block;width: 30px; height: 30px; position: absolute; right: 10px; top: 10px; background:#ccc;border-radius: 50%}
+.couponlist .active{background: red}

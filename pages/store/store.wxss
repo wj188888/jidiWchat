@@ -1,0 +1,14 @@
+/* pages/store/store.wxss */
+.search{ background: #fff; margin-top: 20rpx; padding: 20rpx 0; box-sizing: border-box}
+.search-box{ width: 84%; margin: 0 auto; height: 70rpx; border-radius: 25px; background:#ededed;line-height: 70rpx;}
+.search-box .iconfont{font-size: 20px; color: #808080; float: left; margin:0 20rpx}
+.search-box input{height: 50rpx; display: inline-block; border-left: 1px solid #808080; margin-top: 10rpx; padding: 0 20rpx; box-sizing: border-box}
+.storelist{ width: 100%; background: #fff; box-sizing: border-box; border-bottom: 1px solid #ccc; float: left; margin-top: 20rpx; padding-bottom: 0;}
+.storelist .img image{ width:120rpx; height: 120rpx; float: left; margin-right: 20rpx}
+.storelist .top{ padding: 20rpx; box-sizing: border-box;border-bottom: 1px solid #ccc; width: 100%;float: left }
+.storelist .top text{ display: block;  width: 65%; float: left}
+/* .storelist .storename{ font-size: 30rpx;} */
+.storelist .distance{ color: #ff0000;}
+.storelist .bottom view{ width: 50%; height: 40px; line-height: 40px; text-align: center; float: left; box-sizing: border-box; font-size: 14px}
+.storelist .bottom view.left{ border-right: 1px solid #ccc}
+.storelist .bottom view text{ display: inline-block; margin: 0;  color: #ff0000; margin-right: 10rpx}
