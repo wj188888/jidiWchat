@@ -1,0 +1,94 @@
+<!-- 核销页 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>券详情</title>
+    <link rel="stylesheet" href="css/verification.css">
+    <script type="text/javascript" src="../js/jQuery.js"></script>
+    <script src="js/setWidth.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 用户信息 -->
+        <div class="contentBox infoBox">
+            <div class="titleBox">
+                <p>用户信息</p>
+            </div>
+            <div class="info">
+                <img src="images/header.png" alt="header" class="header">
+                <div class="infoTxt">
+                    <p>罗布斯</p>
+                    <p>18081888888</p>
+                </div>
+            </div>
+        </div>
+        <!-- 核销内容 -->
+        <div class="contentBox verificationBox">
+            <div class="titleBox">
+                <p>核销内容</p>
+            </div>
+            <!-- 核销内容 -->
+            <div class="Lists">
+                <ul>
+                    <li>
+                        <label>中奖来源：</label>
+                        <p>大转盘中奖</p>
+                    </li>
+                    <li>
+                        <label>奖券名称：</label>
+                        <p>家用空调（挂机）深度清洗 家电上门清洗保养服务 </p>
+                    </li>
+                    <li>
+                        <label>有效期限：</label>
+                        <p>2018-08-01至2018-09-22</p>
+                    </li>
+                    <li>
+                        <label>中奖时间：</label>
+                        <p>2018-07-22 14:22</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- 奖品详情 -->
+            <div class="prizeBox">
+                <div class="detailsBox">
+                    <span>奖品详情:</span>
+                    <div class="lookBtn">展开 ∨</div>
+                </div>
+                <div class="prizeDetails">
+                    <img src="images/veification.png">
+                    <p>卡是否好看</p>
+                    <p>卡是否好看</p>
+                    <p>卡是否好看</p>
+                    <p>卡是否好看</p>
+                    <p>卡是否好看</p>
+                    <p>卡是否好看</p>
+                    <p>卡是否好看</p>
+                </div>
+            </div>
+        </div>
+        <!-- 按钮组 -->
+        <div class="btnBox">
+            <button class="btn okbtn canBtn">确认信息并立即核销</button>
+            <button class="btn disableBtn alreadyBtn">已核销</button>
+            <button class="btn disableBtn notReachedBtn">未到领取时间</button>
+            <button class="btn disableBtn expireBtn">过期未领取</button>
+            <button class="btn disableBtn receivedBtn">已经领过了</button>
+        </div>
+    </div>
+    <script>
+        setWidth(320);
+        // 收起展开事件
+        $(document).ready(function() {
+            $(".lookBtn").click(function() {
+                $(".lookBtn").text($(".prizeDetails").is(":hidden") ? "收起 ∧" : "展开 ∨");
+                $(".prizeDetails").slideToggle();
+            })
+        });
+    </script>
+</body>
+
+</html>

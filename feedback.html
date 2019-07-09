@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>问题反馈</title>
+    <link rel="stylesheet" href="css/feedback.css">
+    <link rel="stylesheet" href="uploadImg/uploadImg.min.css">
+    <script type="text/javascript" src="../js/jQuery.js"></script>
+    <script src="uploadImg/uploadImg.min.js"></script>
+    <script src="js/setWidth.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="importBox">
+                <textarea class="inportTxt" placeholder="请输入您遇到的问题或建议" maxlength="500"></textarea>
+            </div>
+            <div class="uploadBox" id="uploadPic"></div>
+        </div>
+        <div class="btnBox">
+            <button class="subBtn">提交</button>
+        </div>
+    </div>
+    <script>
+        setWidth(320);
+        $(".inportTxt").keyup(function() {
+            var val = $(".inportTxt").val();
+            if (val) {
+                $(".subBtn").css("background-color", "#ff3126")
+            } else {
+                $(".subBtn").css("background-color", "#cccccc")
+            }
+        });
+
+        // 提交
+        $(".subBtn").click(function() {
+            var val = $(".inportTxt").val();
+            if (val) {
+                console.log("提交")
+            } else {
+                console.log("请输入内容")
+            }
+
+        });
+
+        // 上传图片
+        $(function() {
+            $("#uploadPic").uploadFile({
+                prevImgList: [], //修改模式json路径还原
+                readOnly: false, //只允许读取图片，没有上传功能
+                showProgressBar: true, //是否显示进度条
+                showProgressStatus: true, //是否显示进度百分比文字
+                fileName: 'Filedata', //文件表单名
+                imgUrlName: 'FiledataEdit', //返回图片路径表单名
+                viewSize: [60, 60], //预览图片尺寸
+                allowView: true, //是否允许点击放大默认true
+                // picSize: [150, 113], //限制上传图片尺寸
+                picTips: "上传尺寸为{0}像素X{1}像素", //提示语，{0}为图片限制的宽度，{1}为图片限制的高度
+                limitNum: 4, //限制上传文件个数
+                fileSize: 5, //允许上传文件大小，单位M
+                acceptType: "", //上传类型，默认为图片
+                progressColor: '#04be02', //进度条颜色
+                // actionUrl: "./upload.php", //不为空时选中就上传
+                dealMsgCall: function(text) { //处理信息回调函数
+                    console.log(text)
+                },
+                startUpload: function() {
+                    console.log("upload start!")
+                },
+                endUpload: function() {
+                    console.log("upload ok!")
+                },
+                ajaxRemove: function(imgUrl, removeFun) { //ajax删除图片
+                    var removeFlag = true;
+                    if (removeFlag) {
+                        console.log("ajax移除回调，移除图片路径:" + imgUrl);
+                        removeFun(); //ajax删除文件成功后用于移出预览
+                    }
+                },
+                callBackOtherData: function(data) {
+                    console.log(data)
+                        //处理返回数据
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

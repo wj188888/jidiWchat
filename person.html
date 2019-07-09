@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>机地个人中心</title>
+    <link rel="stylesheet" href="css/person.css">
+    <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
+    <script type="text/javascript" src="../js/jQuery.js"></script>
+    <script src="js/setWidth.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <img class="header" src="images/header.png" alt="header">
+            <div class="personInfo">
+                <p>罗布斯</p>
+                <div class="memberRankBox">
+                    <img src="images/rankIcon.png">
+                    <span>普通会员</span>
+                </div>
+            </div>
+            <a href="setting.html">
+                <img class="goSet" src="images/setIcon.png" alt="set">
+            </a>
+        </div>
+        <div class="content">
+            <!-- 我的积分优惠券 -->
+            <div class="mineLists">
+                <ul>
+                    <li>
+                        <a href="coupon.html" class="border_l_0">
+                            <div class="upBox">
+                                <span class="mineTxt">我的优惠券</span>
+                                <img class="nextIcon" src="images/nextIcon.png">
+                            </div>
+                            <div class="countBox">
+                                <span class="numTxt">3</span>
+                                <span>张可用</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="integral.html">
+                            <div class="upBox">
+                                <span class="mineTxt">我的积分</span>
+                                <img class="nextIcon" src="images/nextIcon.png">
+                            </div>
+                            <div class="countBox">
+                                <span class="numTxt">50</span>
+                                <span>分</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 我的订单 -->
+            <div class="contentBox orderBox">
+                <div class="titleBox">
+                    <span class="title">我的订单</span>
+                    <!-- <span>全部订单<img class="nextIcon" src="images/nextIcon.png"></span> -->
+                </div>
+                <div class="Box">即将开放</div>
+            </div>
+            <!-- 积分商城 -->
+            <div class="contentBox shopBox">
+                <div class="titleBox">
+                    <span class="title">积分商城</span>
+                    <!-- <span>更多<img class="nextIcon" src="images/nextIcon.png"></span> -->
+                </div>
+                <div class="Box">即将开放</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        setWidth(320);
+    </script>
+</body>
+
+</html>

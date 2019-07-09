@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>优惠券</title>
+    <link rel="stylesheet" href="css/coupon.css">
+    <script type="text/javascript" src="../js/jQuery.js"></script>
+    <script src="js/setWidth.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tabs">
+            <ul>
+                <li class="active">未使用（4）</li>
+                <li>已使用（0）</li>
+                <li>已过期（2）</li>
+            </ul>
+        </div>
+        <div class="tabContent">
+            <!-- 未使用 -->
+            <div class="notUsed">
+                <div class="couponList notUsedList">
+                    <div class="noPriceCouponInfo">
+                        <div class="left">
+                            <p class="couponName">家用空调（挂机）深度清洗服务1次</p>
+                            <p>线下渠道专供</p>
+                        </div>
+                        <div class="right">
+                            <p class="pricebox">
+                                <span class="price"></span>
+                                <span class="uint"></span>
+                            </p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="couponDetail">
+                        <div class="circle leftCir"></div>
+                        <span class="date">有效期：2018-07-01 至 2018-08-01</span>
+                        <a class="lookDetail" href="couponDetail.html">查看详情</a>
+                        <div class="circle rightCir"></div>
+                    </div>
+                </div>
+                <div class="couponList notUsedList">
+                    <div class="couponInfo">
+                        <div class="left">
+                            <p class="couponName">家用油烟机深度清洗</p>
+                            <p>线下渠道专供</p>
+                        </div>
+                        <div class="right">
+                            <p class="pricebox">
+                                <span class="uint">￥</span>
+                                <span class="price">10</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="couponDetail">
+                        <div class="circle leftCir"></div>
+                        <span class="date">有效期：2018-07-01 至 2018-08-01</span>
+                        <a class="lookDetail" href="couponDetail.html">查看详情</a>
+                        <div class="circle rightCir"></div>
+                    </div>
+                </div>
+                <div class="couponList notUsedList">
+                    <div class="couponInfo">
+                        <div class="left">
+                            <p class="couponName">机地屏幕维修券</p>
+                            <p>线下渠道专供</p>
+                        </div>
+                        <div class="right">
+                            <p class="pricebox">
+                                <span class="uint">￥</span>
+                                <span class="price">10</span>
+                            </p>
+                            <p>满300使用</p>
+                        </div>
+                    </div>
+                    <div class="couponDetail">
+                        <div class="circle leftCir"></div>
+                        <span class="date">有效期：2018-07-01 至 2018-08-01</span>
+                        <a class="lookDetail" href="couponDetail.html">查看详情</a>
+                        <div class="circle rightCir"></div>
+                    </div>
+                </div>
+                <div class="couponList notUsedList">
+                    <div class="couponInfo">
+                        <div class="left">
+                            <p class="couponName">机地屏幕维修券</p>
+                            <p>线下渠道专供</p>
+                        </div>
+                        <div class="right">
+                            <p class="pricebox">
+                                <span class="price">6.8</span>
+                                <span class="uint">折</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="couponDetail">
+                        <div class="circle leftCir"></div>
+                        <span class="date">有效期：2018-07-01 至 2018-08-01</span>
+                        <a class="lookDetail" href="couponDetail.html">查看详情</a>
+                        <div class="circle rightCir"></div>
+                    </div>
+                </div>
+
+                <!-- 无数据 -->
+                <div class="noCouponBox">
+                    <img src="images/nodata.png">
+                    <p>暂时没有数据</p>
+                </div>
+            </div>
+            <!-- 已使用 -->
+            <div class="alreadyUsed">
+                <div class="couponList alreadyUsedList">
+                    <div class="couponInfo">
+                        <div class="left">
+                            <p class="couponName">机地屏幕维修券</p>
+                            <p>线下渠道专供</p>
+                        </div>
+                        <div class="right">
+                            <p class="pricebox">
+                                <span class="price">6.8</span>
+                                <span class="uint">折</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="couponDetail">
+                        <div class="circle leftCir"></div>
+                        <span class="date">有效期：2018-07-01 至 2018-08-01</span>
+                        <a class="lookDetail" href="couponDetail.html">查看详情</a>
+                        <div class="circle rightCir"></div>
+                    </div>
+                    <img class="usedIcon" src="images/usedIcon.png">
+                </div>
+                <!-- 无数据 -->
+                <div class="noCouponBox">
+                    <img src="images/nodata.png">
+                    <p>暂时没有数据</p>
+                </div>
+            </div>
+            <!-- 已过期 -->
+            <div class="expire">
+                <div class="couponList expireList">
+                    <div class="couponInfo">
+                        <div class="left">
+                            <p class="couponName">机地屏幕维修券</p>
+                            <p>线下渠道专供</p>
+                        </div>
+                        <div class="right">
+                            <p class="pricebox">
+                                <span class="uint">￥</span>
+                                <span class="price">10</span>
+                            </p>
+                            <p>满300使用</p>
+                        </div>
+                    </div>
+                    <div class="couponDetail">
+                        <div class="circle leftCir"></div>
+                        <span class="date">有效期：2018-07-01 至 2018-08-01</span>
+                        <a class="lookDetail" href="couponDetail.html">查看详情</a>
+                        <div class="circle rightCir"></div>
+                    </div>
+                </div>
+                <div class="couponList expireList">
+                    <div class="couponInfo">
+                        <div class="left">
+                            <p class="couponName">机地屏幕维修券</p>
+                            <p>线下渠道专供</p>
+                        </div>
+                        <div class="right">
+                            <p class="pricebox">
+                                <span class="price">6.8</span>
+                                <span class="uint">折</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="couponDetail">
+                        <div class="circle leftCir"></div>
+                        <span class="date">有效期：2018-07-01 至 2018-08-01</span>
+                        <a class="lookDetail" href="couponDetail.html">查看详情</a>
+                        <div class="circle rightCir"></div>
+                    </div>
+                </div>
+                <div class="noCouponBox">
+                    <img src="images/nodata.png">
+                    <p>暂时没有数据</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        setWidth(320);
+
+        $(".tabs ul li").click(function() {
+            var index = $(this).index();
+            $(".tabs ul li").removeClass("active");
+            $(".tabs ul li").eq(index).addClass("active");
+            if (index == 0) {
+                $(".tabContent .notUsed").css("display", "block");
+                $(".tabContent .alreadyUsed").css("display", "none");
+                $(".tabContent .expire").css("display", "none");
+            } else if (index == 1) {
+                $(".tabContent .notUsed").css("display", "none");
+                $(".tabContent .alreadyUsed").css("display", "block");
+                $(".tabContent .expire").css("display", "none");
+            } else {
+                $(".tabContent .notUsed").css("display", "none");
+                $(".tabContent .alreadyUsed").css("display", "none");
+                $(".tabContent .expire").css("display", "block");
+            }
+        });
+    </script>
+</body>
+
+</html>

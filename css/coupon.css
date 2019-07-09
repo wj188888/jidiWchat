@@ -1,0 +1,261 @@
+/* 优惠券 */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #eeedf2;
+}
+
+.conatainer {
+    width: 100%;
+}
+
+.tabs {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.tabs ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.tabs ul li {
+    width: 30%;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    height: 45px;
+    line-height: 45px;
+}
+
+.tabs ul li.active {
+    border-bottom: 2px solid #f95353;
+}
+
+.tabContent {
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.couponList {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.couponList .couponInfo,
+.couponList .noPriceCouponInfo {
+    width: 100%;
+    min-height: 55px;
+    padding: 10px 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*无价格 */
+
+.couponList .noPriceCouponInfo .left {
+    width: 100% !important;
+    line-height: 20px;
+}
+
+.couponList .noPriceCouponInfo .couponName {
+    width: 100%;
+    font-size: 14px;
+    display: block;
+}
+
+
+/* 有价格 */
+
+.couponList .couponInfo .left {
+    width: 70%;
+    line-height: 20px;
+}
+
+.couponList .couponInfo .right {
+    text-align: right;
+}
+
+.couponList .couponInfo .couponName {
+    width: 100%;
+    font-size: 14px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.couponList .couponInfo .uint {
+    font-size: 18px;
+}
+
+.couponList .couponInfo .price {
+    font-size: 30px;
+}
+
+.couponList .couponDetail {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ffd9d9;
+}
+
+.couponList .couponDetail .date {
+    color: #999999;
+}
+
+.lookDetail {
+    font-size: 12px;
+    text-decoration: none;
+}
+
+
+/* 未使用 */
+
+.notUsedList {
+    color: #ef5d53;
+    border-top: 5px solid #f95353;
+}
+
+.notUsedList .couponInfo .pricebox {
+    color: #ef5d53;
+}
+
+.notUsedList .couponDetail {
+    border-top: 1px solid #ffd9d9;
+}
+
+.notUsedList .couponInfo .couponName {
+    color: #333;
+}
+
+.notUsedList .noPriceCouponInfo .couponName {
+    color: #333;
+}
+
+.notUsedList .lookDetail {
+    color: #ef5d53;
+}
+
+
+/* 已使用、已过期 */
+
+.alreadyUsedList,
+.expireList {
+    color: #999;
+    border-top: 5px solid #cccccc;
+}
+
+.alreadyUsedList .couponDetail,
+.expireList .couponDetail {
+    border-top: 1px solid #cccccc;
+}
+
+.alreadyUsedList .couponInfo .couponName,
+.expireList .couponInfo .couponName {
+    color: #666;
+}
+
+.alreadyUsedList .noPriceCouponInfo .couponName,
+.expireList .noPriceCouponInfo .couponName {
+    color: #666666;
+}
+
+.alreadyUsedList .lookDetail,
+.expireList .lookDetail {
+    color: #999;
+}
+
+
+/* 已使用 */
+
+.alreadyUsed .alreadyUsedList {
+    position: relative;
+}
+
+.alreadyUsed .alreadyUsedList .usedIcon {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    width: 70px;
+    height: 70px;
+}
+
+
+/* 已过期 */
+
+
+/* 两侧固定圆圈 */
+
+.circle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #eeedf2;
+    border-radius: 7.5px;
+    top: -8px;
+}
+
+.leftCir {
+    left: -18px;
+}
+
+.rightCir {
+    right: -18px;
+}
+
+
+/* 选项卡内容 */
+
+.tabContent .notUsed {
+    display: block;
+}
+
+.tabContent .alreadyUsed {
+    display: none;
+}
+
+.tabContent .expire {
+    display: none;
+}
+
+
+/* 暂无数据 */
+
+.noCouponBox {
+    width: 100%;
+    height: 250px;
+    font-size: 14px;
+    color: #666666;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noCouponBox img {
+    width: 125px;
+    height: 125px;
+}

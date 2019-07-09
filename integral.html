@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的积分</title>
+    <link rel="stylesheet" href="css/integral.css">
+    <script type="text/javascript" src="../js/jQuery.js"></script>
+    <script src="js/setWidth.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="integralBox">
+                <p>当前积分：</p>
+                <p class="currentIntegral">1000</p>
+                <p>共获取积分：1450分 &nbsp;|&nbsp;共消耗积分：450分</p>
+                <div class="lookRule">积分规则</div>
+            </div>
+            <!-- 领取榜 -->
+            <div class="receiveBox">
+                <div class="receiveTitle">
+                    <img src="images/star.png">
+                    <span>领取榜</span>
+                </div>
+                <div class="receiveList">
+                    <ul>
+                        <li>
+                            <span>A***16</span>
+                            <span>大乐透抽奖获得积分150分</span>
+                        </li>
+                        <li>
+                            <span>A***17</span>
+                            <span>大乐透抽奖获得积分150分</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="earnPointBox">
+                <div class="pointList">
+                    <ul>
+                        <li>
+                            <img src="images/integralIcon.png">
+                            <p>抽奖赚积分</p>
+                        </li>
+                        <li>
+                            <img src="images/integralIcon.png">
+                            <p>抽奖赚积分</p>
+                        </li>
+                        <li>
+                            <img src="images/integralIcon.png">
+                            <p>抽奖赚积分</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="moreBox">
+                    <img src="images/leftIcon.png">
+                    <a href="#" class="more">更多方式了解一下</a>
+                    <img src="images/rightIcon.png">
+                </div>
+            </div>
+        </div>
+
+        <!-- tab切换 -->
+        <div class="tabBox">
+            <div class="tabs">
+                <ul>
+                    <li class="active">获取积分</li>
+                    <li>消耗积分</li>
+                </ul>
+            </div>
+            <div class="tabContent">
+                <!-- 获取积分 -->
+                <div class="tabList gaintab">
+                    <ul>
+                        <li>
+                            <div class="pointinfo">
+                                <p class="pointName">暑期抽奖活动</p>
+                                <p>2018-07-01 15：22</p>
+                            </div>
+                            <p class="points">+50</p>
+                        </li>
+                        <li>
+                            <div class="pointinfo">
+                                <p class="pointName">暑期抽奖活动</p>
+                                <p>2018-07-01 15：22</p>
+                            </div>
+                            <p class="points">+50</p>
+                        </li>
+                        <li>
+                            <div class="pointinfo">
+                                <p class="pointName">暑期抽奖活动</p>
+                                <p>2018-07-01 15：22</p>
+                            </div>
+                            <p class="points">+50</p>
+                        </li>
+                        <li>
+                            <div class="pointinfo">
+                                <p class="pointName">暑期抽奖活动</p>
+                                <p>2018-07-01 15：22</p>
+                            </div>
+                            <p class="points">+50</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 消耗积分 -->
+                <div class="tabList expendtab">
+                    <ul>
+                        <li>
+                            <div class="pointinfo">
+                                <p class="pointName">熊猫基地门票兑换1张</p>
+                                <p>2018-07-01 15：22</p>
+                            </div>
+                            <p class="points">-250</p>
+                        </li>
+                        <li>
+                            <div class="pointinfo">
+                                <p class="pointName">熊猫基地门票兑换1张</p>
+                                <p>2018-07-01 15：22</p>
+                            </div>
+                            <p class="points">-250</p>
+                        </li>
+                        <li>
+                            <div class="pointinfo">
+                                <p class="pointName">熊猫基地门票兑换1张</p>
+                                <p>2018-07-01 15：22</p>
+                            </div>
+                            <p class="points">-250</p>
+                        </li>
+                        <li>
+                            <div class="pointinfo">
+                                <p class="pointName">熊猫基地门票兑换1张</p>
+                                <p>2018-07-01 15：22</p>
+                            </div>
+                            <p class="points">-250</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 积分规则弹窗 -->
+        <div class="rulemask">
+            <div class="ruleDialog">
+                <span class="closeDialog">×</span>
+                <div class="dialogContent">
+                    <p class="title">积分规则</p>
+                    <p class="ruleCount">1. 积分获取</p> a) 积分专属邮乐,仅限邮乐网内使用;<br> b) 积分可以累积,2年内有效;<br> c) 买家在***消费购物可以获得积分,积分返点比例为:除3C产品外的所有商品均以2元:1积分计,3C产品以10元:1积分计,购买的商品页面中显示积分为零的商品不享受积分获取;<br> d) 积分的数值精确到个位(小数点后全部舍弃,不进行四舍五入),例如:**101元的商品,返50(101*0.5=50.5)个积分;<br> e) 买家在完成该笔交易(订单状态为&ldquo;已签收&rdquo;)后才能得到此笔交易的相应积分,如购买商品参加店铺其他优惠,则优惠的金额部分不享受积分获取;<br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        setWidth(320);
+        $(".tabBox .tabs ul li").click(function() {
+            var index = $(this).index();
+            $(".tabBox .tabs ul li").removeClass("active");
+            $(".tabBox .tabs ul li").eq(index).addClass("active");
+            if (index == 0) {
+                $(".tabContent .gaintab").css("display", "block");
+                $(".tabContent .expendtab").css("display", "none");
+            } else {
+                $(".tabContent .gaintab").css("display", "none");
+                $(".tabContent .expendtab").css("display", "block");
+            }
+        });
+
+        $(".lookRule").click(function() {
+            $(".rulemask").css("display", "block");
+        });
+        $(".closeDialog").click(function() {
+            $(".rulemask").css("display", "none");
+        });
+    </script>
+</body>
+
+</html>
